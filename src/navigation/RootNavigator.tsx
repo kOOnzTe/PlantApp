@@ -3,8 +3,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { RootStackParamList } from '../types/navigation.types';
 import { useIsFirstTime } from '../hooks';
 import OnboardingStackNavigator from './OnboardingStackNavigator'; // TODO: add
-import MainTabNavigator from './MainTabNavigator'; // TODO: add
-import PaywallScreen from '../screens/paywall/PaywallScreen'; // TODO: add
+// import MainTabNavigator from './MainTabNavigator'; // TODO: add
+// import PaywallScreen from '../screens/paywall/PaywallScreen'; // TODO: add
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -42,7 +42,7 @@ const RootNavigator: React.FC = () => {
           }),
         }}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Paywall"
         component={PaywallScreen}
         options={{
@@ -77,7 +77,7 @@ const RootNavigator: React.FC = () => {
             },
           }),
         }}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };
