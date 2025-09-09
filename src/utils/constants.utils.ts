@@ -1,6 +1,7 @@
 import type { Feature } from '../types/ui.types';
 
-export const DUMMY_API_URL = 'https://dummy-api-jtg6bessta-ey.a.run.app/';
+export const DUMMY_API_URL: string =
+  'https://dummy-api-jtg6bessta-ey.a.run.app/';
 
 export const PAYWALL_FEATURES: Feature[] = [
   {

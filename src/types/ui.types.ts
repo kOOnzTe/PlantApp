@@ -34,3 +34,35 @@ export interface SelectableButtonProps {
   onPress: () => void;
   badgeText?: string;
 }
+
+export interface TabIconProps {
+  iconName: string;
+  focused: boolean;
+}
+export interface ScanIconProps {
+  focused: boolean;
+}
+export interface HomeHeaderProps {
+  greeting: string;
+  searchValue?: string;
+  onSearchChange?: (text: string) => void;
+  searchPlaceholder?: string;
+}
+
+export interface CategoryCardProps {
+  item: import('./api.types').Category;
+  index: number;
+  onPress?: (category: import('./api.types').Category) => void;
+}
+
+export interface PremiumBannerProps {
+  onPress?: () => void;
+  title?: string;
+  subtitle?: string;
+  notificationCount?: number;
+}
+
+export interface QuestionCardProps {
+  item: import('./api.types').Question;
+  onPress?: (question: import('./api.types').Question) => void;
+}

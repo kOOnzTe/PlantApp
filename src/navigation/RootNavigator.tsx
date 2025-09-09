@@ -4,7 +4,7 @@ import { RootStackParamList } from '../types/navigation.types';
 import { useIsFirstTime } from '../hooks';
 import OnboardingStackNavigator from './OnboardingStackNavigator';
 import PaywallScreen from '../screens/paywall/PaywallScreen';
-// import MainTabNavigator from './MainTabNavigator'; // TODO: add
+import MainTabNavigator from './MainTabNavigator';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -60,7 +60,7 @@ const RootNavigator: React.FC = () => {
           }),
         }}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="MainTabs"
         component={MainTabNavigator}
         options={{
@@ -77,7 +77,7 @@ const RootNavigator: React.FC = () => {
             },
           }),
         }}
-      /> */}
+      />
     </Stack.Navigator>
   );
 };
