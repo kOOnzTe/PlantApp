@@ -8,3 +8,9 @@ export interface PrimaryButtonProps {
   onPress?: () => void;
   disabled?: boolean;
 }
+
+export interface Feature {
+  text: string;
+  subtext: string;
+  icon: string;
+}
