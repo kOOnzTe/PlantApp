@@ -3,11 +3,12 @@ import type {
   CategoriesResponse,
   QuestionsResponse,
 } from '../../types/api.types';
+import { DUMMY_API_URL } from '../../constants/api';
 
 export const plantsApi = createApi({
   reducerPath: 'plantsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://dummy-api-jtg6bessta-ey.a.run.app/',
+    baseUrl: DUMMY_API_URL,
     prepareHeaders: headers => {
       headers.set('Content-Type', 'application/json');
       return headers;
