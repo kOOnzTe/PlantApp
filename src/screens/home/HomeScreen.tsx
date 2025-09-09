@@ -9,7 +9,6 @@ import {
   CategoryCard,
   GetStartedSection,
   CategoriesEmptyState,
-  PremiumBanner,
 } from '../../components';
 import type { Category, Question } from '../../types/api.types';
 
@@ -51,7 +50,6 @@ const HomeScreen: React.FC = () => {
 
       <SafeAreaView style={styles.safeArea} edges={['top']}>
         <HomeHeader greeting={greeting} onSearchChange={handleSearchChange} />
-        <PremiumBanner onPress={handlePremiumPress} />
         <View style={styles.mainContent}>
           {categories.data?.data && categories.data.data.length > 0 ? (
             <FlashList
@@ -62,6 +60,7 @@ const HomeScreen: React.FC = () => {
               ListHeaderComponent={() => (
                 <GetStartedSection
                   questions={questions}
+                  onPremiumPress={handlePremiumPress}
                   onQuestionPress={handleQuestionPress}
                 />
               )}
@@ -77,6 +76,7 @@ const HomeScreen: React.FC = () => {
               ListHeaderComponent={() => (
                 <GetStartedSection
                   questions={questions}
+                  onPremiumPress={handlePremiumPress}
                   onQuestionPress={handleQuestionPress}
                 />
               )}

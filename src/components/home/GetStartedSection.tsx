@@ -4,9 +4,11 @@ import { FlashList } from '@shopify/flash-list';
 import QuestionCard from './QuestionCard';
 import type { Question } from '../../types/api.types';
 import { GetStartedSectionProps } from '../../types/ui.types';
+import PremiumBanner from './PremiumBanner';
 
 const GetStartedSection: React.FC<GetStartedSectionProps> = ({
   questions,
+  onPremiumPress,
   onQuestionPress,
 }) => {
   const renderQuestionItem = ({ item }: { item: Question }) => (
@@ -15,6 +17,8 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
 
   return (
     <>
+      <PremiumBanner onPress={onPremiumPress} />
+
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionTitle}>Get Started</Text>
         {questions.isLoading ? (

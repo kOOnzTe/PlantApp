@@ -86,5 +86,6 @@ export interface GetStartedSectionProps {
     error: any;
     isError: boolean;
   };
+  onPremiumPress?: () => void;
   onQuestionPress: (question: Question) => void;
 }
