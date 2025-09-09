@@ -3,7 +3,7 @@ import type {
   CategoriesResponse,
   QuestionsResponse,
 } from '../../types/api.types';
-import { DUMMY_API_URL } from '../../constants/api';
+import { DUMMY_API_URL } from '../../utils/constants.utils';
 
 export const plantsApi = createApi({
   reducerPath: 'plantsApi',
