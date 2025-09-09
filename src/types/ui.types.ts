@@ -1,3 +1,5 @@
+import { Question } from './api.types';
+
 export interface PlaceholderScreenProps {
   title: string;
   subtitle: string;
@@ -65,4 +67,24 @@ export interface PremiumBannerProps {
 export interface QuestionCardProps {
   item: import('./api.types').Question;
   onPress?: (question: import('./api.types').Question) => void;
+}
+
+export interface WelcomeMessageProps {
+  greeting: string;
+}
+
+export interface SearchBarProps {
+  value?: string;
+  onSearchChange?: (text: string) => void;
+  placeholder?: string;
+}
+
+export interface GetStartedSectionProps {
+  questions: {
+    data: any;
+    isLoading: boolean;
+    error: any;
+    isError: boolean;
+  };
+  onQuestionPress: (question: Question) => void;
 }

@@ -1,21 +1,15 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  ActivityIndicator,
-  StatusBar,
-} from 'react-native';
+import { View, StyleSheet, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlashList } from '@shopify/flash-list';
 import { useHomeScreenData } from '../../hooks/useApiData';
 import { getTimeBasedGreeting } from '../../utils/greetings.utils';
 import {
   HomeHeader,
-  PremiumBanner,
-  QuestionCard,
   CategoryCard,
+  GetStartedSection,
+  CategoriesEmptyState,
+  PremiumBanner,
 } from '../../components';
 import type { Category, Question } from '../../types/api.types';
 
@@ -41,9 +35,6 @@ const HomeScreen: React.FC = () => {
     console.log('Search query:', text);
   };
 
-  const renderQuestionItem = ({ item }: { item: Question }) => (
-    <QuestionCard item={item} onPress={handleQuestionPress} />
-  );
   const renderCategoryItem = ({
     item,
     index,
@@ -60,48 +51,47 @@ const HomeScreen: React.FC = () => {
 
       <SafeAreaView style={styles.safeArea} edges={['top']}>
         <HomeHeader greeting={greeting} onSearchChange={handleSearchChange} />
-        <ScrollView
-          style={styles.scrollView}
-          contentContainerStyle={styles.scrollContent}
-          showsVerticalScrollIndicator={false}
-        >
-          <PremiumBanner onPress={handlePremiumPress} />
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Get Started</Text>
-            {questions.isLoading ? (
-              <View style={styles.loadingContainer}>
-                <ActivityIndicator size="small" color="#28AF6E" />
-              </View>
-            ) : questions.error ? (
-              <Text style={styles.errorText}>Failed to load questions</Text>
-            ) : (
-              <FlashList
-                data={questions.data || []}
-                renderItem={renderQuestionItem}
-                keyExtractor={item => item.id.toString()}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={styles.horizontalListContent}
-              />
-            )}
-          </View>
-          <View style={styles.categoriesSection}>
-            {categories.isLoading ? (
-              <View style={styles.loadingContainer}>
-                <ActivityIndicator size="small" color="#28AF6E" />
-              </View>
-            ) : categories.error ? (
-              <Text style={styles.errorText}>Failed to load categories</Text>
-            ) : (
-              <FlashList
-                data={categories.data?.data || []}
-                renderItem={renderCategoryItem}
-                keyExtractor={item => item.id.toString()}
-                numColumns={2}
-              />
-            )}
-          </View>
-        </ScrollView>
+        <PremiumBanner onPress={handlePremiumPress} />
+        <View style={styles.mainContent}>
+          {categories.data?.data && categories.data.data.length > 0 ? (
+            <FlashList
+              data={categories.data.data}
+              renderItem={renderCategoryItem}
+              keyExtractor={item => item.id.toString()}
+              numColumns={2}
+              ListHeaderComponent={() => (
+                <GetStartedSection
+                  questions={questions}
+                  onQuestionPress={handleQuestionPress}
+                />
+              )}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={styles.mainListContent}
+              ListHeaderComponentStyle={styles.listHeader}
+            />
+          ) : (
+            <FlashList
+              data={[]}
+              renderItem={() => null}
+              keyExtractor={() => 'empty'}
+              ListHeaderComponent={() => (
+                <GetStartedSection
+                  questions={questions}
+                  onQuestionPress={handleQuestionPress}
+                />
+              )}
+              ListEmptyComponent={() => (
+                <View style={styles.categoriesSection}>
+                  <CategoriesEmptyState
+                    isLoading={categories.isLoading}
+                    error={categories.isError}
+                  />
+                </View>
+              )}
+              showsVerticalScrollIndicator={false}
+            />
+          )}
+        </View>
       </SafeAreaView>
     </View>
   );
@@ -115,40 +105,20 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
   },
-  scrollView: {
+  mainContent: {
     flex: 1,
-  },
-  scrollContent: {
     marginTop: 6,
-  },
-  loadingContainer: {
-    paddingVertical: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  errorText: {
-    fontSize: 14,
-    fontFamily: 'Rubik-Regular',
-    color: '#FF6B6B',
-    textAlign: 'center',
-    paddingVertical: 20,
-  },
-  sectionContainer: {
-    marginBottom: 8,
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontFamily: 'Rubik-Medium',
-    color: '#13231B',
-    marginBottom: 16,
-    marginHorizontal: 24,
-  },
-  horizontalListContent: {
-    paddingLeft: 24,
   },
   categoriesSection: {
     marginHorizontal: 24,
     marginTop: 8,
+  },
+  mainListContent: {
+    paddingHorizontal: 24,
+  },
+  listHeader: {
+    marginHorizontal: -24,
+    marginBottom: 8,
   },
 });
 

@@ -1,6 +1,10 @@
 export { default as HomeHeader } from './HomeHeader';
+export { default as GetStartedSection } from './GetStartedSection';
+export { default as CategoriesEmptyState } from './CategoriesEmptyState';
 export { default as PremiumBanner } from './PremiumBanner';
 export { default as QuestionCard } from './QuestionCard';
 export { default as CategoryCard } from './CategoryCard';
 export { default as TabIcon } from './TabIcon';
 export { default as ScanIcon } from './ScanIcon';
+export { default as WelcomeMessage } from './WelcomeMessage';
+export { default as SearchBar } from './SearchBar';
