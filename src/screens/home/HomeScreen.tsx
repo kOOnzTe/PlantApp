@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlashList } from '@shopify/flash-list';
@@ -14,6 +14,7 @@ import type { Category, Question } from '../../types/api.types';
 
 const HomeScreen: React.FC = () => {
   const { questions, categories } = useHomeScreenData();
+  const [searchValue, setSearchValue] = useState<string>('');
 
   const greeting = getTimeBasedGreeting();
 
@@ -31,6 +32,7 @@ const HomeScreen: React.FC = () => {
   };
   // TODO: implement search functionality, debounce etc
   const handleSearchChange = (text: string) => {
+    setSearchValue(text);
     console.log('Search query:', text);
   };
 
@@ -49,7 +51,11 @@ const HomeScreen: React.FC = () => {
       <StatusBar barStyle="dark-content" />
 
       <SafeAreaView style={styles.safeArea} edges={['top']}>
-        <HomeHeader greeting={greeting} onSearchChange={handleSearchChange} />
+        <HomeHeader
+          greeting={greeting}
+          searchValue={searchValue}
+          onSearchChange={handleSearchChange}
+        />
         <View style={styles.mainContent}>
           {categories.data?.data && categories.data.data.length > 0 ? (
             <FlashList

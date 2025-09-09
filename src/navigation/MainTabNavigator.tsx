@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { MainTabParamList } from '../types/navigation.types';
 import { TabIcon, ScanIcon } from '../components/home';
@@ -89,7 +89,7 @@ const MainTabNavigator: React.FC = () => {
 const styles = StyleSheet.create({
   tabBar: {
     backgroundColor: '#FFFFFF',
-    marginBottom: 6,
+    marginBottom: Platform.OS === 'ios' ? 6 : 0,
   },
   tabBarLabel: {
     fontSize: 12,
