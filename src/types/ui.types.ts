@@ -14,3 +14,23 @@ export interface Feature {
   subtext: string;
   icon: string;
 }
+
+export interface CloseButtonProps {
+  onPress: () => void;
+  size?: number;
+  color?: string;
+}
+
+export interface FeatureCardProps {
+  text: string;
+  subtext: string;
+  icon: string; // 'unlimitedIcon' | 'fasterIcon' | 'leavesIcon'
+}
+
+export interface SelectableButtonProps {
+  isSelected: boolean;
+  mainText: string;
+  subText: string;
+  onPress: () => void;
+  badgeText?: string;
+}
