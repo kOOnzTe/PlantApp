@@ -56,26 +56,6 @@
     {
       "path": "src/assets/fonts/Rubik-SemiBoldItalic.ttf",
       "sha1": "ee3f3f0c7ae6cc077048b444a1131e37c508b32c"
-    },
-    {
-      "path": "src/assets/fonts/SFProText-Bold.ttf",
-      "sha1": "632e6cea171b276e5dd1f13b152c702fbf562cee"
-    },
-    {
-      "path": "src/assets/fonts/SFProText-Light.ttf",
-      "sha1": "ecc8da32c2eac6044c807e945375180b7cda3a20"
-    },
-    {
-      "path": "src/assets/fonts/SFProText-Medium.ttf",
-      "sha1": "3b8df618cd23e83843b16a8a32de1ddc9de44df4"
-    },
-    {
-      "path": "src/assets/fonts/SFProText-Regular.ttf",
-      "sha1": "b4893462f2289df6978f9462a63db9e64bcc9342"
-    },
-    {
-      "path": "src/assets/fonts/SFProText-Semibold.ttf",
-      "sha1": "9560ae412d73c7c9af72333db50464b4e597b0f9"
     }
   ]
 }
