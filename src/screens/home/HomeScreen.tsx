@@ -22,21 +22,22 @@ const HomeScreen: React.FC = () => {
   const handleQuestionPress = useCallback((question: Question) => {
     console.log('Question pressed:', question.title);
   }, []);
-
   // TODO: navigate to category details
   const handleCategoryPress = useCallback((category: Category) => {
     console.log('Category pressed:', category.title);
   }, []);
-
   // TODO: navigate to premium/paywall
   const handlePremiumPress = useCallback(() => {
     console.log('Premium banner pressed');
   }, []);
+
   // TODO: implement search functionality, debounce etc
   const handleSearchChange = useCallback((text: string) => {
     setSearchValue(text);
     console.log('Search query:', text);
   }, []);
+
+  // TODO: isAnyLoading -global loading screen- and hasAnyError -global error screen- (from useApiData) screens could be added here
 
   const renderCategoryItem = useCallback(
     ({ item, index }: { item: Category; index: number }) => (

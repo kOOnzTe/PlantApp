@@ -21,7 +21,6 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
   return (
     <>
       <PremiumBanner onPress={onPremiumPress} />
-
       <View style={styles.sectionContainer}>
         <Text style={styles.sectionTitle}>Get Started</Text>
         {questions.isLoading ? (

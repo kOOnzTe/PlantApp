@@ -12,12 +12,11 @@ const { height } = Dimensions.get('window');
 
 const OnboardingFirstSlide: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
-        style={styles.backgroundImage}
-        resizeMode="cover"
-      />
+    <ImageBackground
+      source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
+      style={styles.backgroundImage}
+      // resizeMode="cover"
+    >
       <View style={styles.headerSection}>
         <Text style={styles.titleText}>
           Take a photo to <Text style={styles.titleBold}>identify</Text>
@@ -36,19 +35,16 @@ const OnboardingFirstSlide: React.FC = () => {
           resizeMode="contain"
         />
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   backgroundImage: {
+    flex: 1,
     position: 'absolute',
     width: '100%',
     height: '100%',
-    opacity: 0.75,
   },
   headerSection: {
     marginTop: height * 0.08,

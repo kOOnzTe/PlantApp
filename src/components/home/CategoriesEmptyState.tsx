@@ -1,10 +1,6 @@
 import React, { memo } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
-
-interface CategoriesEmptyStateProps {
-  isLoading: boolean;
-  error: boolean;
-}
+import { CategoriesEmptyStateProps } from '../../types/ui.types';
 
 const CategoriesEmptyState: React.FC<CategoriesEmptyStateProps> = ({
   isLoading,

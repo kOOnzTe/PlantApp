@@ -13,12 +13,11 @@ const { width, height } = Dimensions.get('window');
 
 const OnboardingSecondSlide: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
-        style={styles.backgroundImage}
-        resizeMode="cover"
-      />
+    <ImageBackground
+      source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
+      style={styles.backgroundImage}
+      // resizeMode="cover"
+    >
       <View style={styles.headerSection}>
         <Text style={styles.titleText}>
           Get plant <Text style={styles.titleBold}>care guides</Text>
@@ -54,19 +53,16 @@ const OnboardingSecondSlide: React.FC = () => {
         ]}
         style={styles.shadowOverlay}
       />
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   backgroundImage: {
+    flex: 1,
     position: 'absolute',
     width: '100%',
     height: '100%',
-    opacity: 0.75,
   },
   backgroundImageBehindMain: {
     position: 'absolute',
@@ -102,7 +98,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 1,
     shadowRadius: 4,
-    elevation: 4, // for Android
+    elevation: 4,
   },
   imageSection: {
     justifyContent: 'center',

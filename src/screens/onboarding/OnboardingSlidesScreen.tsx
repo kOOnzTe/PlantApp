@@ -16,7 +16,7 @@ const { width, height } = Dimensions.get('window');
 const OnboardingSlidesScreen: React.FC<OnboardingSlidesScreenProps> = ({
   navigation,
 }) => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState<number>(0);
   const translateX = useRef(new Animated.Value(0)).current;
 
   const handleContinue = () => {
@@ -29,7 +29,7 @@ const OnboardingSlidesScreen: React.FC<OnboardingSlidesScreenProps> = ({
         setCurrentSlide(1);
       });
     } else {
-      navigation.getParent()?.navigate('Paywall');
+      navigation.navigate('Paywall');
     }
   };
 
@@ -52,7 +52,6 @@ const OnboardingSlidesScreen: React.FC<OnboardingSlidesScreenProps> = ({
           <OnboardingSecondSlide />
         </View>
       </Animated.View>
-
       <View style={styles.bottomSection}>
         <PrimaryButton title="Continue" onPress={handleContinue} />
         <View style={styles.pageIndicators}>

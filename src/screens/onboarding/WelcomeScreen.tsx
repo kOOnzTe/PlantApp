@@ -19,14 +19,13 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
+      style={styles.backgroundImage}
+      // resizeMode="cover"
+    >
       <StatusBar barStyle="dark-content" />
 
-      <ImageBackground
-        source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
-        style={styles.backgroundImage}
-        resizeMode="cover"
-      />
       <View style={styles.headerSection}>
         <Text style={styles.title}>
           Welcome to <Text style={styles.titleHighlight}>PlantApp</Text>
@@ -50,15 +49,13 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ navigation }) => {
           <Text style={styles.linkText}>Privacy Policy</Text>.
         </Text>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   backgroundImage: {
+    flex: 1,
     position: 'absolute',
     width: '100%',
     height: '100%',
