@@ -48,8 +48,8 @@ const OnboardingSecondSlide: React.FC = () => {
       <LinearGradient
         colors={[
           'rgba(255, 255, 255, 0)',
-          'rgba(255, 255, 255, 0.4)',
-          'rgba(255, 255, 255, 0.6)',
+          'rgba(255, 255, 255, 0.1)',
+          'rgba(255, 255, 255, 0.5)',
         ]}
         style={styles.shadowOverlay}
       />
