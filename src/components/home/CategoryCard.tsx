@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {
   View,
   Text,
@@ -69,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryCard;
+export default memo(CategoryCard);

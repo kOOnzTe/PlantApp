@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 
 interface CategoriesEmptyStateProps {
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoriesEmptyState;
+export default memo(CategoriesEmptyState);

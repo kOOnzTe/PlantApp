@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ImageBackground, StyleSheet } from 'react-native';
 import { HomeHeaderProps } from '../../types/ui.types';
 import WelcomeMessage from './WelcomeMessage';
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeHeader;
+export default memo(HomeHeader);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FlashList } from '@shopify/flash-list';
@@ -19,31 +19,30 @@ const HomeScreen: React.FC = () => {
   const greeting = getTimeBasedGreeting();
 
   // TODO: navigate to question details
-  const handleQuestionPress = (question: Question) => {
+  const handleQuestionPress = useCallback((question: Question) => {
     console.log('Question pressed:', question.title);
-  };
+  }, []);
+
   // TODO: navigate to category details
-  const handleCategoryPress = (category: Category) => {
+  const handleCategoryPress = useCallback((category: Category) => {
     console.log('Category pressed:', category.title);
-  };
+  }, []);
+
   // TODO: navigate to premium/paywall
-  const handlePremiumPress = () => {
+  const handlePremiumPress = useCallback(() => {
     console.log('Premium banner pressed');
-  };
+  }, []);
   // TODO: implement search functionality, debounce etc
-  const handleSearchChange = (text: string) => {
+  const handleSearchChange = useCallback((text: string) => {
     setSearchValue(text);
     console.log('Search query:', text);
-  };
+  }, []);
 
-  const renderCategoryItem = ({
-    item,
-    index,
-  }: {
-    item: Category;
-    index: number;
-  }) => (
-    <CategoryCard item={item} index={index} onPress={handleCategoryPress} />
+  const renderCategoryItem = useCallback(
+    ({ item, index }: { item: Category; index: number }) => (
+      <CategoryCard item={item} index={index} onPress={handleCategoryPress} />
+    ),
+    [handleCategoryPress],
   );
 
   return (
@@ -63,13 +62,13 @@ const HomeScreen: React.FC = () => {
               renderItem={renderCategoryItem}
               keyExtractor={item => item.id.toString()}
               numColumns={2}
-              ListHeaderComponent={() => (
+              ListHeaderComponent={
                 <GetStartedSection
                   questions={questions}
                   onPremiumPress={handlePremiumPress}
                   onQuestionPress={handleQuestionPress}
                 />
-              )}
+              }
               showsVerticalScrollIndicator={false}
               contentContainerStyle={styles.mainListContent}
               ListHeaderComponentStyle={styles.listHeader}
@@ -79,21 +78,21 @@ const HomeScreen: React.FC = () => {
               data={[]}
               renderItem={() => null}
               keyExtractor={() => 'empty'}
-              ListHeaderComponent={() => (
+              ListHeaderComponent={
                 <GetStartedSection
                   questions={questions}
                   onPremiumPress={handlePremiumPress}
                   onQuestionPress={handleQuestionPress}
                 />
-              )}
-              ListEmptyComponent={() => (
+              }
+              ListEmptyComponent={
                 <View style={styles.categoriesSection}>
                   <CategoriesEmptyState
                     isLoading={categories.isLoading}
                     error={categories.isError}
                   />
                 </View>
-              )}
+              }
               showsVerticalScrollIndicator={false}
             />
           )}

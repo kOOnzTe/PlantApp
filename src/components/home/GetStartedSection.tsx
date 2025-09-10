@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import QuestionCard from './QuestionCard';
@@ -11,8 +11,11 @@ const GetStartedSection: React.FC<GetStartedSectionProps> = ({
   onPremiumPress,
   onQuestionPress,
 }) => {
-  const renderQuestionItem = ({ item }: { item: Question }) => (
-    <QuestionCard item={item} onPress={onQuestionPress} />
+  const renderQuestionItem = useCallback(
+    ({ item }: { item: Question }) => (
+      <QuestionCard item={item} onPress={onQuestionPress} />
+    ),
+    [onQuestionPress],
   );
 
   return (
@@ -70,4 +73,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GetStartedSection;
+export default memo(GetStartedSection);
