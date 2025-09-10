@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   backgroundImageBehindMain: {
     position: 'absolute',
-    top: -10,
+    top: -20,
     bottom: 0,
     width: '100%',
   },
