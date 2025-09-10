@@ -1,7 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { MainTabParamList } from '../types/navigation.types';
 import { TabIcon, ScanIcon } from '../components/home';
 import HomeScreen from '../screens/home/HomeScreen';
@@ -31,58 +30,56 @@ const renderScanIcon = ({ focused }: { focused: boolean }) => (
 
 const MainTabNavigator: React.FC = () => {
   return (
-    <SafeAreaProvider>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarActiveTintColor: '#28AF6E',
-          tabBarInactiveTintColor: '#ABABAB',
-          tabBarStyle: styles.tabBar,
-          tabBarLabelStyle: styles.tabBarLabel,
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: '#28AF6E',
+        tabBarInactiveTintColor: '#ABABAB',
+        tabBarStyle: styles.tabBar,
+        tabBarLabelStyle: styles.tabBarLabel,
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: renderHomeIcon,
         }}
-      >
-        <Tab.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{
-            tabBarLabel: 'Home',
-            tabBarIcon: renderHomeIcon,
-          }}
-        />
-        <Tab.Screen
-          name="Diagnose"
-          component={DiagnoseScreen}
-          options={{
-            tabBarLabel: 'Diagnose',
-            tabBarIcon: renderDiagnoseIcon,
-          }}
-        />
-        <Tab.Screen
-          name="Scan"
-          component={ScanScreen}
-          options={{
-            tabBarLabel: '',
-            tabBarIcon: renderScanIcon,
-          }}
-        />
-        <Tab.Screen
-          name="Garden"
-          component={GardenScreen}
-          options={{
-            tabBarLabel: 'My Garden',
-            tabBarIcon: renderGardenIcon,
-          }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{
-            tabBarLabel: 'Profile',
-            tabBarIcon: renderProfileIcon,
-          }}
-        />
-      </Tab.Navigator>
-    </SafeAreaProvider>
+      />
+      <Tab.Screen
+        name="Diagnose"
+        component={DiagnoseScreen}
+        options={{
+          tabBarLabel: 'Diagnose',
+          tabBarIcon: renderDiagnoseIcon,
+        }}
+      />
+      <Tab.Screen
+        name="Scan"
+        component={ScanScreen}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: renderScanIcon,
+        }}
+      />
+      <Tab.Screen
+        name="Garden"
+        component={GardenScreen}
+        options={{
+          tabBarLabel: 'My Garden',
+          tabBarIcon: renderGardenIcon,
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarLabel: 'Profile',
+          tabBarIcon: renderProfileIcon,
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 

@@ -20,27 +20,12 @@ const RootNavigator: React.FC = () => {
       initialRouteName={initialRouteName}
       screenOptions={{
         headerShown: false,
-        cardStyle: { backgroundColor: '#FFFFFF' },
         gestureEnabled: false,
       }}
     >
       <Stack.Screen
         name="OnboardingStack"
         component={OnboardingStackNavigator}
-        options={{
-          cardStyleInterpolator: ({ current, layouts }) => ({
-            cardStyle: {
-              transform: [
-                {
-                  translateX: current.progress.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [layouts.screen.width, 0],
-                  }),
-                },
-              ],
-            },
-          }),
-        }}
       />
       <Stack.Screen
         name="Paywall"
@@ -60,24 +45,7 @@ const RootNavigator: React.FC = () => {
           }),
         }}
       />
-      <Stack.Screen
-        name="MainTabs"
-        component={MainTabNavigator}
-        options={{
-          cardStyleInterpolator: ({ current, layouts }) => ({
-            cardStyle: {
-              transform: [
-                {
-                  translateX: current.progress.interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [layouts.screen.width, 0],
-                  }),
-                },
-              ],
-            },
-          }),
-        }}
-      />
+      <Stack.Screen name="MainTabs" component={MainTabNavigator} />
     </Stack.Navigator>
   );
 };
