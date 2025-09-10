@@ -89,3 +89,8 @@ export interface GetStartedSectionProps {
   onPremiumPress?: () => void;
   onQuestionPress: (question: Question) => void;
 }
+
+export interface CategoriesEmptyStateProps {
+  isLoading: boolean;
+  error: boolean;
+}

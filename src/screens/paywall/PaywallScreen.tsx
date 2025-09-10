@@ -23,8 +23,8 @@ const { width, height } = Dimensions.get('window');
 const PaywallScreen: React.FC<PaywallScreenProps> = ({ navigation }) => {
   const dispatch = useAppDispatch();
   // not-functional yet thus not implemented in redux store
-  const [monthlySelected, setMonthlySelected] = useState(true);
-  const [yearlySelected, setYearlySelected] = useState(false);
+  const [monthlySelected, setMonthlySelected] = useState<boolean>(true);
+  const [yearlySelected, setYearlySelected] = useState<boolean>(false);
 
   const handleClose = () => {
     dispatch(completeOnboarding());
