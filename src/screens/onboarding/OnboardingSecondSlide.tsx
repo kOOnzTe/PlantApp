@@ -1,23 +1,12 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  Dimensions,
-  ImageBackground,
-  Text,
-} from 'react-native';
+import { View, StyleSheet, Image, Dimensions, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const { width, height } = Dimensions.get('window');
 
 const OnboardingSecondSlide: React.FC = () => {
   return (
-    <ImageBackground
-      source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
-      style={styles.backgroundImage}
-      // resizeMode="cover"
-    >
+    <View>
       <View style={styles.headerSection}>
         <Text style={styles.titleText}>
           Get plant <Text style={styles.titleBold}>care guides</Text>
@@ -53,7 +42,7 @@ const OnboardingSecondSlide: React.FC = () => {
         ]}
         style={styles.shadowOverlay}
       />
-    </ImageBackground>
+    </View>
   );
 };
 

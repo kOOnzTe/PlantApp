@@ -1,22 +1,11 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  Dimensions,
-  ImageBackground,
-  Text,
-} from 'react-native';
+import { View, StyleSheet, Image, Dimensions, Text } from 'react-native';
 
 const { height } = Dimensions.get('window');
 
 const OnboardingFirstSlide: React.FC = () => {
   return (
-    <ImageBackground
-      source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
-      style={styles.backgroundImage}
-      // resizeMode="cover"
-    >
+    <View>
       <View style={styles.headerSection}>
         <Text style={styles.titleText}>
           Take a photo to <Text style={styles.titleBold}>identify</Text>
@@ -35,7 +24,7 @@ const OnboardingFirstSlide: React.FC = () => {
           resizeMode="contain"
         />
       </View>
-    </ImageBackground>
+    </View>
   );
 };
 

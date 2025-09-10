@@ -5,6 +5,7 @@ import {
   Dimensions,
   StatusBar,
   Animated,
+  ImageBackground,
 } from 'react-native';
 import type { OnboardingSlidesScreenProps } from '../../types/navigation.types';
 import { PrimaryButton } from '../../components';
@@ -34,7 +35,11 @@ const OnboardingSlidesScreen: React.FC<OnboardingSlidesScreenProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../../assets/images/onboarding/onboardingBackgroundImage.png')}
+      style={styles.backgroundImage}
+      // resizeMode="cover"
+    >
       <StatusBar barStyle="dark-content" />
 
       <Animated.View
@@ -74,13 +79,16 @@ const OnboardingSlidesScreen: React.FC<OnboardingSlidesScreenProps> = ({
           <View style={[styles.indicator, styles.inactiveIndicator]} />
         </View>
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  backgroundImage: {
     flex: 1,
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
   },
   slidesWrapper: {
     flex: 1,
