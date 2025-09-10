@@ -1,97 +1,164 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# PlantApp
 
-# Getting Started
+This is a bare React Native app that replicates [PlantApp](https://plantapp.app/).
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Prerequisites
 
-## Step 1: Start Metro
+- **Node.js** >= 20
+- **React Native CLI** - Follow the [React Native environment setup guide](https://reactnative.dev/docs/set-up-your-environment)
+- **iOS**: Xcode and CocoaPods
+- **Android**: Android Studio and SDK
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+> **Note**: This project was created with React Native 0.81.1
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## Getting Started
 
-```sh
-# Using npm
-npm start
+### 1. Install Dependencies
 
-# OR using Yarn
-yarn start
+```bash
+npm install
 ```
 
-## Step 2: Build and run your app
+### 2. iOS Setup
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Install CocoaPods dependencies:
 
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### iOS
-
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
+```bash
+# Install bundler (first time only)
 bundle install
+
+# Install pods
+cd ios && pod install
 ```
 
-Then, and every time you update your native dependencies, run:
+### 3. Run the App
 
-```sh
-bundle exec pod install
+#### Start Metro
+
+```bash
+npm start
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+#### Run on Android
 
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+```bash
+npx react-native run-android
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+#### Run on iOS
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+npx react-native run-ios
+```
 
-## Step 3: Modify your app
+### 4. Run Tests
 
-Now that you have successfully run the app, let's make changes!
+```bash
+# Run all tests
+npm test
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+# Run tests in watch mode
+npm test -- --watch
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+# Run tests with coverage
+npm test -- --coverage
+```
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## Overview
+https://github.com/user-attachments/assets/046059ee-5d0b-43d2-8b9f-d3f45f3d6e44
 
-## Congratulations! :tada:
 
-You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
+## App Structure
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+- **TypeScript** - Type-safe development
+- **Clean Code** - Well-organized and maintainable codebase
+- **Well-Structured** - Modular architecture with clear separation of concerns
 
-# Troubleshooting
+The app follows a clean architecture pattern with:
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- **Component-based UI** - Reusable and modular components
+- **Centralized State Management** - Redux Toolkit for predictable state updates
+- **Type Safety** - Full TypeScript implementation
+- **Navigation Structure** - Stack and tab-based navigation
+- **Persistent Storage** - Redux Persist with AsyncStorage
+- **Modern Design** - Figma-implemented responsive desing
 
-# Learn More
+## Folder Structure
 
-To learn more about React Native, take a look at the following resources:
+```
+PlantApp/
+├── __tests__/              
+│   ├── onboardingSlice.test.ts
+│   └── store.test.ts
+├── android/                
+├── ios/                    
+├── src/                    
+│   ├── assets/             
+│   │   ├── fonts/          
+│   │   └── images/         
+│   │       ├── home/       
+│   │       ├── onboarding/ 
+│   │       └── paywall/    
+│   ├── components/         
+│   │   ├── home/           
+│   │   ├── onboarding/     
+│   │   ├── paywall/
+│   │   ├── common/
+│   ├── hooks/              
+│   ├── navigation/         
+│   ├── screens/            
+│   │   ├── home/           
+│   │   ├── onboarding/     
+│   │   └── paywall/        
+│   ├── store/              
+│   │   ├── api/            
+│   │   ├── slices/         
+│   │   └── store.ts        
+│   ├── types/               
+│   └── utils/                
+├── App.tsx                 
+├── index.js               
+└── package.json           
+```
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Technical Stack
+
+### Core Technologies
+
+- **Framework**: React Native v0.81.1
+- **Language**: TypeScript v5.8.3
+- **State Management**: Redux & Redux Toolkit with Redux Persist
+  - `@reduxjs/toolkit` v2.9.0
+  - `react-redux` v9.2.0
+  - `redux-persist` v6.0.0
+  - `@react-native-async-storage/async-storage` v2.2.0
+- **API Management**: RTK Query for data fetching and caching
+- **Navigation**: React Navigation v7
+  - `@react-navigation/native` v7.1.17
+  - `@react-navigation/stack` v7.4.8
+  - `@react-navigation/bottom-tabs` v7.4.7
+- **Lists**: `@shopify/flash-list` v2.0.3
+- **UI Components**:
+  - `react-native-linear-gradient` v2.8.3
+  - `react-native-safe-area-context` v5.5.2
+  - `react-native-gesture-handler` v2.28.0
+- **QA / Testing**:
+  - `jest` v29.6.3
+
+
+### Development Tools
+
+- **Type Checking**: TypeScript
+- **Code Quality**: ESLint v8.19.0
+- **Code Formatting**: Prettier v2.8.8
+- **Testing**: Jest v29.6.3
+
+## Design & API Resources
+
+### Design
+- **Figma Design**: [PlantApp](https://www.figma.com/design/EBocQLQi7YnoZxpSBTfAy8/iOS-Case?node-id=0-1&p=f&t=j80DBTMAYOkc6OKY-0)
+
+### API Endpoints
+- **Categories API**: `https://dummy-api-jtg6bessta-ey.a.run.app/getCategories`
+- **Questions API**: `https://dummy-api-jtg6bessta-ey.a.run.app/getQuestions`
