@@ -5,6 +5,7 @@ import {
   Image,
   Dimensions,
   ImageBackground,
+  Text,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -19,9 +20,12 @@ const OnboardingSecondSlide: React.FC = () => {
         resizeMode="cover"
       />
       <View style={styles.headerSection}>
+        <Text style={styles.titleText}>
+          Get plant <Text style={styles.titleBold}>care guides</Text>
+        </Text>
         <Image
-          source={require('../../assets/images/onboarding/onboardingTwoTitleImage.png')}
-          style={styles.titleImage}
+          source={require('../../assets/images/onboarding/brushImage.png')}
+          style={styles.brushImage}
           resizeMode="contain"
         />
       </View>
@@ -71,11 +75,34 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   headerSection: {
-    marginTop: height * 0.07,
+    marginTop: height * 0.08,
+    marginBottom: height * 0.05,
     marginHorizontal: 24,
   },
-  titleImage: {
-    height: 90,
+  titleText: {
+    fontSize: 28,
+    fontFamily: 'Rubik-Medium',
+    color: '#13231B',
+    textShadowColor: 'rgba(0, 0, 0, 0.25)',
+    textShadowOffset: { width: 0, height: 4 },
+    textShadowRadius: 4,
+  },
+  titleBold: {
+    fontFamily: 'Rubik-ExtraBold',
+    fontSize: 28,
+    color: '#13231B',
+  },
+  brushImage: {
+    position: 'absolute',
+    width: 158,
+    height: 18,
+    right: 62,
+    top: 33,
+    shadowColor: 'rgba(0, 0, 0, 0.25)',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 1,
+    shadowRadius: 4,
+    elevation: 4, // for Android
   },
   imageSection: {
     justifyContent: 'center',
@@ -85,6 +112,7 @@ const styles = StyleSheet.create({
     width: width * 0.7,
     height: height * 0.75,
     zIndex: 2,
+    marginTop: height * 0.02,
   },
   artworkImage: {
     position: 'absolute',
